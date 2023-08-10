@@ -1,0 +1,4069 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "FlowBase - APi",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/{tenant}/Account/Renew": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRenewRequest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRenewRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRenewRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRenewRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/{tenant}/Account/Authenticate": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserTokenResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/{tenant}/Account/ChangePassword": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAuthenticationRequestDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAuthenticationRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAuthenticationRequestDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAuthenticationRequestDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserAuthenticationResponseDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/{tenant}/Account/ResetPassword": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResetPasswordRequestDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResetPasswordRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResetPasswordRequestDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResetPasswordRequestDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResetPasswordResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/{tenant}/{version}/{company}/Account/SendPasswordResetToken": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGenerateTokenRequestDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGenerateTokenRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGenerateTokenRequestDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGenerateTokenRequestDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserGenerateTokenResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/api/{tenant}/Account/FindUser": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFindRequestDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFindRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFindRequestDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFindRequestDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserFindResponseDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/anonymous/{tenant}/{version}/{company}/Documents/StreamVideo": {
+        "get": {
+          "tags": [
+            "AnonymousDocument"
+          ],
+          "parameters": [
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "key",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "token",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/anonymous/{tenant}/{version}/{company}/Documents": {
+        "get": {
+          "tags": [
+            "AnonymousDocument"
+          ],
+          "parameters": [
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "key",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "token",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "noFileName",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "htmlContent",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/gfs/{tenant}/{version}/{company}": {
+        "get": {
+          "tags": [
+            "Document"
+          ],
+          "parameters": [
+            {
+              "name": "gfsFileId",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "noFileName",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/{version}/{company}/Documents/{key}": {
+        "get": {
+          "tags": [
+            "Document"
+          ],
+          "parameters": [
+            {
+              "name": "key",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "noFileName",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "htmlContent",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Document"
+          ],
+          "parameters": [
+            {
+              "name": "key",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/{version}/{company}/Documents": {
+        "post": {
+          "tags": [
+            "Document"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "version",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/AddDocumentHandler": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddDocumentHandlerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AddDocumentHandlerResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/anonymous/{tenant}/pub/{company}/DocumentSigningDevice/AuthorizeDevice": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizeTransportHandlerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthorizeTransportHandlerResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/ClaimDocuments": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimDocumentsRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ClaimDocumentsResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/CompleteDocumentSigning": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompleteDocumentsRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CompleteDocumentsResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/ConfirmDocumentResource": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentResourceRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentResourceResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/CreateNewSigningRequest": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentSigningRequestDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentSigningLabelResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/anonymous/{tenant}/pub/{company}/DocumentSigningDevice/CreateNewHandler": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTransportHandlerModel"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransportHandlerModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/DownloadDocumentAttachment": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadDocumentAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DownloadDocumentAttachmentResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/GetDocumentsSigning": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDocumentsRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/GetDocumentsResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/GetTransportHandlerInfo": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTransportHandlerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransportHandlerModel"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/GetTransportHandlers": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTransportHandlersRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TransportHandlerModel"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/ListDocuments": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDocuments"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ClaimDocumentsResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/RejectDocument": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RejectDocumentSigningRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RejectDocumentSigningResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/RejectDocumentResource": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentResourceRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentResourceResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/RemoveDocumentHandler": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveDocumentHandlerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RemoveDocumentHandlerResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/RemoveDocumentResource": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveDocumentResourceRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RemoveDocumentResourceResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/UndeliverableDocument": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UndeliverableDocumentSigningRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UndeliverableDocumentSigningResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/UploadAttachment": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientSignatureResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/UploadClientSignature": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientSignatureResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/UploadClientSignatureMultiple": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientSignatureResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/UploadDocumentForSigning": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentSigningUpload"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentSigningUploadResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/UploadDocumentImage": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientSignatureResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningClient/UploadDocumentResource": {
+        "post": {
+          "tags": [
+            "DocumentSigningClient"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadResourceRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UploadResourceResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/DocumentSigningDevice/UploadIssuerSignature": {
+        "post": {
+          "tags": [
+            "DocumentSigningDevice"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadAttachmentRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientSignatureResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/Documents/DocumentMove": {
+        "post": {
+          "tags": [
+            "Documents"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentMoveRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentMoveResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/Documents/DocumentSearch": {
+        "post": {
+          "tags": [
+            "Documents"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentSearchRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentSearchResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/Documents/DocumentUpdateMetadata": {
+        "post": {
+          "tags": [
+            "Documents"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentMetadataRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DocumentMetadataResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      },
+      "/api/public/{tenant}/pub/{company}/Api/DateTimeConvert": {
+        "post": {
+          "tags": [
+            "Api"
+          ],
+          "parameters": [
+            {
+              "name": "tenant",
+              "in": "path",
+              "required": true,
+              "example": "FLBDev"
+            },
+            {
+              "name": "company",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtFormatRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DtFormatResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            },
+            {
+              "basic": [ ]
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "TokenRenewRequest": {
+          "required": [
+            "refreshToken",
+            "token"
+          ],
+          "type": "object",
+          "properties": {
+            "token": {
+              "minLength": 15,
+              "type": "string"
+            },
+            "refreshToken": {
+              "minLength": 15,
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserTokenResponseDto": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "nullable": true
+            },
+            "userName": {
+              "type": "string",
+              "nullable": true
+            },
+            "validTo": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "refreshToken": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ProblemDetails": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "nullable": true
+            },
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "status": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "detail": {
+              "type": "string",
+              "nullable": true
+            },
+            "instance": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "AuthenticateDto": {
+          "required": [
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserAuthenticationRequestDto": {
+          "required": [
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string",
+              "nullable": true
+            },
+            "passwordConfirm": {
+              "type": "string",
+              "nullable": true
+            },
+            "oldPassword": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserFindStatus": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer",
+          "format": "int32",
+          "x-enumNames": [
+            "NotFound",
+            "Found",
+            "WrongPassword",
+            "PasswordMismatch"
+          ]
+        },
+        "UserAuthenticationResponseDto": {
+          "required": [
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            },
+            "findStatus": {
+              "$ref": "#/components/schemas/UserFindStatus"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserResetPasswordRequestDto": {
+          "required": [
+            "password",
+            "token",
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserResetPasswordResponseDto": {
+          "required": [
+            "status",
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserGenerateTokenRequestDto": {
+          "required": [
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserGenerateTokenResponseDto": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserFindRequestDto": {
+          "required": [
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserFindResponseDto": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "userName": {
+              "type": "string",
+              "nullable": true
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "findStatus": {
+              "$ref": "#/components/schemas/UserFindStatus"
+            }
+          },
+          "additionalProperties": false
+        },
+        "AddDocumentHandlerRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "transportHandlerId": {
+              "type": "string",
+              "nullable": true
+            },
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "AddDocumentHandlerResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "AuthorizeTransportHandlerRequest": {
+          "required": [
+            "deviceId",
+            "id"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "deviceId": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "AuthorizeTransportHandlerResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            },
+            "token": {
+              "type": "string",
+              "nullable": true
+            },
+            "expires": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "ClaimDocumentsRequest": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "AttachmentType": {
+          "enum": [
+            1,
+            2,
+            10
+          ],
+          "type": "integer",
+          "format": "int32",
+          "x-enumNames": [
+            "Signature",
+            "Media",
+            "SourceDocument"
+          ]
+        },
+        "Document": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SigningDocumentAttachment": {
+          "type": "object",
+          "properties": {
+            "attachmentType": {
+              "$ref": "#/components/schemas/AttachmentType"
+            },
+            "attachment": {
+              "$ref": "#/components/schemas/Document"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "entityIdentifier": {
+              "type": "string",
+              "nullable": true
+            },
+            "entity": {
+              "type": "string",
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SigningDocumentResource": {
+          "required": [
+            "id"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryName": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPhoneNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCountry": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPostCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCity": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryAddress": {
+              "type": "string",
+              "nullable": true
+            },
+            "confirmed": {
+              "type": "boolean"
+            },
+            "rejected": {
+              "type": "boolean"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "externalResourceId": {
+              "type": "string",
+              "nullable": true
+            },
+            "externalDocumentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentInteraction": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "type": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "longitude": {
+              "type": "number",
+              "format": "double"
+            },
+            "latitude": {
+              "type": "number",
+              "format": "double"
+            },
+            "additionalData": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentStatus": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer",
+          "format": "int32",
+          "x-enumNames": [
+            "Uploaded",
+            "WaitingApproval",
+            "Signed",
+            "Rejected",
+            "Completed",
+            "Undeliverable"
+          ]
+        },
+        "ClaimDocumentsResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "documentSigningRequestId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryName": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPhoneNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCountry": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPostCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCity": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryAddress": {
+              "type": "string",
+              "nullable": true
+            },
+            "attachments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SigningDocumentAttachment"
+              },
+              "nullable": true
+            },
+            "resources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SigningDocumentResource"
+              },
+              "nullable": true
+            },
+            "interactions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentInteraction"
+              },
+              "nullable": true
+            },
+            "status": {
+              "$ref": "#/components/schemas/DocumentStatus"
+            },
+            "externalDocumentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "undeliveredReason": {
+              "type": "string",
+              "nullable": true
+            },
+            "numberOfRejectedImages": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "CompleteDocumentsRequest": {
+          "type": "object",
+          "properties": {
+            "documentIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "CompleteDocumentsResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentResourceRequest": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "reason": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentResourceResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSigningRequestDto": {
+          "type": "object",
+          "properties": {
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSigningLabelResponse": {
+          "type": "object",
+          "properties": {
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signingRequestId": {
+              "type": "string",
+              "nullable": true
+            },
+            "qrCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "token": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "CreateTransportHandlerModel": {
+          "required": [
+            "deviceId",
+            "name",
+            "surname",
+            "vatNo",
+            "vehicleNumber"
+          ],
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "surname": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            },
+            "vatNo": {
+              "type": "string"
+            },
+            "vehicleNumber": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "deviceId": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "TransportHandlerModel": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "surname": {
+              "type": "string",
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            },
+            "vatNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "vehicleNumber": {
+              "type": "string",
+              "nullable": true
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "deviceId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DownloadDocumentAttachmentRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DownloadDocumentAttachmentResponse": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "b64Image": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "GetDocumentsRequest": {
+          "required": [
+            "issuerId"
+          ],
+          "type": "object",
+          "properties": {
+            "issuerId": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "GetDocumentsResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "documentSigningRequestId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryName": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPhoneNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCountry": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPostCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCity": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryAddress": {
+              "type": "string",
+              "nullable": true
+            },
+            "attachments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SigningDocumentAttachment"
+              },
+              "nullable": true
+            },
+            "resources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SigningDocumentResource"
+              },
+              "nullable": true
+            },
+            "interactions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentInteraction"
+              },
+              "nullable": true
+            },
+            "status": {
+              "$ref": "#/components/schemas/DocumentStatus"
+            },
+            "externalDocumentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "undeliveredReason": {
+              "type": "string",
+              "nullable": true
+            },
+            "numberOfRejectedImages": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "GetTransportHandlerRequest": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "GetTransportHandlersRequest": {
+          "required": [
+            "transportAuthorityId"
+          ],
+          "type": "object",
+          "properties": {
+            "transportAuthorityId": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "ListDocuments": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "RejectDocumentSigningRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "reason": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RejectDocumentSigningResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RemoveDocumentHandlerRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RemoveDocumentHandlerResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RemoveDocumentResourceRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "resourceIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "issuerId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RemoveDocumentResourceResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UndeliverableDocumentSigningRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "reason": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UndeliverableDocumentSigningResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UploadAttachmentRequest": {
+          "required": [
+            "b64Image",
+            "dateTime",
+            "name"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "documentIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "b64Image": {
+              "type": "string"
+            },
+            "dateTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": {
+              "type": "string"
+            },
+            "entityIdentifier": {
+              "type": "string",
+              "nullable": true
+            },
+            "entity": {
+              "type": "string",
+              "nullable": true
+            },
+            "additionalData": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ClientSignatureResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSigningUpload": {
+          "type": "object",
+          "properties": {
+            "signingRequestId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryName": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPhoneNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCountry": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPostCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCity": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryAddress": {
+              "type": "string",
+              "nullable": true
+            },
+            "externalDocumentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "hasResources": {
+              "type": "boolean"
+            },
+            "numberOfRejectedImages": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSigningUploadResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UploadResourceRequest": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryName": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPhoneNo": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryEmail": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCountry": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryPostCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryCity": {
+              "type": "string",
+              "nullable": true
+            },
+            "signatoryAddress": {
+              "type": "string",
+              "nullable": true
+            },
+            "externalResourceId": {
+              "type": "string",
+              "nullable": true
+            },
+            "externalDocumentId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UploadResourceResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "documentId": {
+              "type": "string",
+              "nullable": true
+            },
+            "qrCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "token": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "MetaData": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "createdBy": {
+              "type": "string",
+              "nullable": true
+            },
+            "updatedBy": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentMoveRequest": {
+          "required": [
+            "namespace"
+          ],
+          "type": "object",
+          "properties": {
+            "namespace": {
+              "type": "string"
+            },
+            "eTag": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "metaData": {
+              "$ref": "#/components/schemas/MetaData"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentMoveResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentMetadata": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "value": {
+              "type": "string",
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSearchRequest": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "namespace": {
+              "type": "string",
+              "nullable": true
+            },
+            "fileName": {
+              "type": "string",
+              "nullable": true
+            },
+            "mimeType": {
+              "type": "string",
+              "nullable": true
+            },
+            "startingDate": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "endingDate": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "documentMetadata": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentMetadata"
+              },
+              "nullable": true
+            },
+            "eTag": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "metaData": {
+              "$ref": "#/components/schemas/MetaData"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentGeolocation": {
+          "type": "object",
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "format": "double"
+            },
+            "longitude": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentDownloadToken": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "nullable": true
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "hasPersistentToken": {
+              "type": "boolean"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "validTo": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "key": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSearchResponseItem": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "namespace": {
+              "type": "string",
+              "nullable": true
+            },
+            "fileName": {
+              "type": "string",
+              "nullable": true
+            },
+            "calculatedMimeType": {
+              "type": "string",
+              "nullable": true
+            },
+            "mimeType": {
+              "type": "string",
+              "nullable": true
+            },
+            "encoding": {
+              "type": "string",
+              "nullable": true
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "geolocation": {
+              "$ref": "#/components/schemas/DocumentGeolocation"
+            },
+            "downloadTokens": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentDownloadToken"
+              },
+              "nullable": true
+            },
+            "documentMetadata": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentMetadata"
+              },
+              "nullable": true
+            },
+            "eTag": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "metaData": {
+              "$ref": "#/components/schemas/MetaData"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentSearchResponse": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentSearchResponseItem"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentMetadataRequestAction": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer",
+          "format": "int32",
+          "x-enumNames": [
+            "Add",
+            "Edit",
+            "Delete"
+          ]
+        },
+        "DocumentMetadataRequest": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "$ref": "#/components/schemas/DocumentMetadataRequestAction"
+            },
+            "documentMetadata": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentMetadata"
+              },
+              "nullable": true
+            },
+            "eTag": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "string",
+              "nullable": true
+            },
+            "metaData": {
+              "$ref": "#/components/schemas/MetaData"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentMetadataResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DtFormatRequest": {
+          "required": [
+            "locale",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "locale": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DtFormatResponse": {
+          "type": "object",
+          "properties": {
+            "formatted": {
+              "type": "string",
+              "nullable": true
+            },
+            "value": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "securitySchemes": {
+        "Bearer": {
+          "type": "apiKey",
+          "description": "Copy 'Bearer ' + valid JWT token into field",
+          "name": "Authorization",
+          "in": "header"
+        },
+        "basic": {
+          "type": "http",
+          "description": "Basic Authorization header.",
+          "scheme": "basic"
+        }
+      }
+    }
+  }

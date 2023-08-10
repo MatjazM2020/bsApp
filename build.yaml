@@ -1,0 +1,17 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - $package$
+    builders:
+      swagger_dart_code_generator:
+        options:
+          input_folder: "lib/flb_api/input"
+          output_folder: "lib/flb_api/output"
+          default_values_map:
+            - type_name: int
+              default_value: '0'
+            - type_name: String
+              default_value: ''
+            - type_name: 'List<String>'
+              default_value: '[]'
