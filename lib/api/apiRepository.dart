@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:shared_preferences/shared_preferences.dart'; 
 
- class ApiCalls{
+
+final dobavnicaApi = DobavnicaApi.create(
+  baseUrl: Uri.parse('https://devapp.flowbase.com'),
+);
+
+class ApiCalls{
     void showPopupError(BuildContext context, String errorMessage) {
     showDialog(
         context: context,
@@ -23,19 +28,15 @@ import 'package:shared_preferences/shared_preferences.dart';
               ]);
         });
   }
-
   void performApiCalls(CreateTransportHandlerModel x, context) async{
      final response1 = await dobavnicaApi
         .apiAnonymousTenantPubCompanyDocumentSigningDeviceCreateNewHandlerPost(
             tenant: 'FLBDev', company: 'FLB', body: x);
-    
     try {
       if (response1.isSuccessful) {
         if (response1.body == null) {
           showPopupError(context, 'Please enter a valid VAT number');
         } else {
-          //response1 is valid, and we can proceed to the second API call.
-          /****************************************************************** */
           String id = response1.body!.id!;
           String deviceId = response1.body!.deviceId!;
 
@@ -56,8 +57,6 @@ import 'package:shared_preferences/shared_preferences.dart';
           if (expires.isBefore(currentTime)) {
             showPopupError(context, 'There was an error, please try again');
           } else {
-            //The response and time are both valid, we can proceed to the last API call (to retrieve the Document List)
-            /**************************************************************** */
             final dobavnicaApiAuthorized = DobavnicaApi.create(
               baseUrl: Uri.parse('https://devapp.flowbase.com'),
               interceptors: [AuthInterceptor(token)],
@@ -73,7 +72,6 @@ import 'package:shared_preferences/shared_preferences.dart';
               showPopupError(context, 'An error occured on the server side');
             }
           }
-          //*********************************************************** */
         }
       } else {
         showPopupError(context, 'An error occured on the server side');

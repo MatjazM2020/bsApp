@@ -5,14 +5,8 @@ import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:uuid/uuid.dart';
 
 
-final dobavnicaApi = DobavnicaApi.create(
-  baseUrl: Uri.parse('https://devapp.flowbase.com'),
-);
-
 DateTime currentTime = DateTime.now();
-
 String key = Uuid().v4();
-
 final List<String> inputTexts = [
   'Name',
   'Surname',
@@ -33,23 +27,22 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   List<String> _inputValues = List.filled(inputTexts.length, '');
-  List<TextEditingController> _controllers =
+  List<TextEditingController> _controllers = 
       List.generate(inputTexts.length, (_) => TextEditingController());
-
 
    void showPopupError(BuildContext context, String errorMessage) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: Text('Error'),
+              title: const Text('Error'),
               content: Text(errorMessage),
               actions: [
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('ok'),
+                  child: const Text('ok'),
                 ),
               ]);
         });
@@ -103,12 +96,11 @@ class _RegisterState extends State<Register> {
     );
   }
 
+
   void _submitForm() async {
-    //*********DATA***************************************
     for (int i = 0; i < _inputValues.length; i++) {
       _inputValues[i] = _controllers[i].text;
     }
-print('daah');
     CreateTransportHandlerModel x = CreateTransportHandlerModel(
         name: _inputValues[0],
         surname: _inputValues[1],
@@ -117,7 +109,6 @@ print('daah');
         vehicleNumber: _inputValues[4],
         email: _inputValues[5],
         deviceId: key);
-
     final ac = ApiCalls(); 
     ac.performApiCalls(x, context);
   }
