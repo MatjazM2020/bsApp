@@ -1,34 +1,25 @@
 import 'package:dobavnice_app/api/apiRepository.dart';
+import 'package:dobavnice_app/models/constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:uuid/uuid.dart';
+import 'package:get_it/get_it.dart'; 
 
-
-DateTime currentTime = DateTime.now();
-String key = Uuid().v4();
-final List<String> inputTexts = [
-  'Name',
-  'Surname',
-  'Phone',
-  'VatNo',
-  'Vehicle Number',
-  'Email',
-];
 
 class Register extends StatefulWidget {
-  Register({super.key});
-
+  const Register({super.key}); 
   @override
   State<Register> createState() {
     return _RegisterState();
   }
 }
 
+
 class _RegisterState extends State<Register> {
-  List<String> _inputValues = List.filled(inputTexts.length, '');
-  List<TextEditingController> _controllers = 
-      List.generate(inputTexts.length, (_) => TextEditingController());
+  final List<String> _inputValues = List.filled(Constants.inputTexts.length, '');
+  final List<TextEditingController> _controllers = List.generate(Constants.inputTexts.length, (_) => TextEditingController());
+  Uuid uuid = GetIt.instance<Uuid>(); 
 
    void showPopupError(BuildContext context, String errorMessage) {
     showDialog(
@@ -62,14 +53,14 @@ class _RegisterState extends State<Register> {
             Expanded(
               child: Form(
                 child: ListView.builder(
-                  itemCount: inputTexts.length,
+                  itemCount: Constants.inputTexts.length,
                   itemBuilder: (ctx, index) => TextFormField(
                     controller: _controllers[index],
                     decoration: InputDecoration(
-                      labelText: inputTexts[index],
+                      labelText: Constants.inputTexts[index],
                     ),
                     onEditingComplete: () {
-                      if (index < inputTexts.length - 1) {
+                      if (index < Constants.inputTexts.length - 1) {
                         FocusScope.of(context).nextFocus();
                       } else {
                         _submitForm();
@@ -108,7 +99,7 @@ class _RegisterState extends State<Register> {
         vatNo: _inputValues[3],
         vehicleNumber: _inputValues[4],
         email: _inputValues[5],
-        deviceId: key);
+        deviceId: uuid.v4());
     final ac = ApiCalls(); 
     ac.performApiCalls(x, context);
   }

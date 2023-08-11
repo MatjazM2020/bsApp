@@ -40,9 +40,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   CircularProgressIndicator(), 
             ),
           );
-        } else if (state is loadingSuccessState) {
+        } else if (state is LoadingSuccessState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-          router.go(Constants.documentPath, extra: state.extraData);
+          router.go(Constants.documentPath, extra: state.extraData); //ta extra data dobis vn iz api klica v loading_cubit 
         });
           return const Scaffold();
         } else {

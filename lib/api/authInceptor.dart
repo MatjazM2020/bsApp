@@ -1,38 +1,40 @@
 import 'package:chopper/chopper.dart';
+import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
+import 'package:dobavnice_app/models/constants.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthInterceptor implements RequestInterceptor{
+class AuthInterceptor implements RequestInterceptor {
   final String token;
   AuthInterceptor(this.token);
 
   @override
   Future<Request> onRequest(Request request) async {
-      //pazi ka se lahko zaciklas tuki zaradi tega k se interceptor klice vsakic 
-      //tuki notr preveris ce je token notr v sharedPreferences, ce je, ga uporabis (+se logika ce se je iztekel),
-      //ce ga ni, mores nrdit request za token, t.j. authorization, v tem primeru pazi ker se lahko zacikla ker ta AuthInterceptor se klice vsakic pr Api-jih 
-      applyHeader(request, 'Authorization', 'Bearer $token'); 
-      return request; 
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? '';
+    String expires = prefs.getString('expires') ?? '';
+    if (token.isNotEmpty){
+      DateTime expirationTime = DateTime.parse(expires);
+      DateTime currentTime = DateTime.now();
+      if (!expirationTime.isAfter(currentTime)){
+        AuthorizeTransportHandlerRequest y = AuthorizeTransportHandlerRequest(id: id, deviceId: deviceId);
+        final api = GetIt.instance<DobavnicaApi>(); 
+        final response2 = await api.apiAnonymousTenantPubCompanyDocumentSigningDeviceAuthorizeDevicePost(tenant: Constants.tenant, company: Constants.company, body: y);
+        
+        DateTime? expires = response2.body!.expires;
+        String? token = response2.body!.token;
+        prefs.setString('expires', expires.toString()); 
+        prefs.setString('token', token.toString());
+      }
+      applyHeader(request, 'Authorization', 'Bearer $token');
+    }
+    return request;
   }
 }
 
 
+//interceptor zadeva samo autorizacije, tj. tokena. 
+//ce mamo id in deviceId shandlamo autorizacijo tuki notr 
+//ce nimamo id in deviceIdja, to nrdimo ze prej. 
 
-//TODO
-//rabis se nrdit logiko za ta interceptor
-// preveris sharedPreferences tukaj ! 
-
-//the purpose of the interceptor is to intercept the request before it is sent to the server and 
-//perform any necessary modifications or checks on the request. 
-
-//ubistvu tuki shendlas vse api klice skori ? 
-
-
-
-
-
-
-
-
-
-
-
-
+//ce je id in deviceId prazen, ne stimammo tokenou (to je pr anonymous callih)
