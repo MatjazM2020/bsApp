@@ -27,24 +27,29 @@ class ApiCalls{
         });
   } 
   void performApiCalls(CreateTransportHandlerModel x, context) async{
+
     final response1 = await dobavnicaApi.apiAnonymousTenantPubCompanyDocumentSigningDeviceCreateNewHandlerPost(tenant: Constants.tenant, company: Constants.company, body: x);
+      
+      print('this is the first response.........:' + response1.toString()); 
       if (response1.isSuccessful){
-        if (response1.body == null) {
+        if (response1.body == null){
           showPopupError(context, 'Please enter a valid VAT number');
         } else {
           String id = response1.body!.id!;
           String deviceId = response1.body!.deviceId!;
-
           final prefs = await SharedPreferences.getInstance(); 
           prefs.setString('id', id); 
           prefs.setString('deviceId', deviceId); 
-          
+
+
           final response2 = await dobavnicaApi.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
+          print('this is the second response.................:'+ response2.body.toString());
+
           if (response2.isSuccessful) {
             if (response2.body != null){
-              router.go('/document', extra: response2.body );
+              router.go(Constants.documentPath, extra: response2.body);
              }
-           } else {
+           }else{
             showPopupError(context, 'An error occured on the server side');
           }
         }

@@ -10,6 +10,8 @@ class AuthInterceptor implements RequestInterceptor {
    
     if(request.uri == Uri.parse('/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/AuthorizeDevice')){
      return request.copyWith(baseUri: Uri.parse(Constants.baseUrl));
+    }else if(request.uri == Uri.parse('/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/CreateNewHandler')){
+      return request.copyWith(baseUri: Uri.parse(Constants.baseUrl)); 
     }
 
     final prefs = await SharedPreferences.getInstance();
@@ -31,7 +33,7 @@ class AuthInterceptor implements RequestInterceptor {
       }
     final headers = Map<String, String>.from(request.headers);
     headers['Authorization'] = 'Bearer $token';
-    return request.copyWith(headers: headers);
+    return request.copyWith(baseUri: Uri.parse(Constants.baseUrl),headers: headers);
     }else{
         AuthorizeTransportHandlerRequest y = AuthorizeTransportHandlerRequest(id: prefs.getString('id')!, deviceId: prefs.getString('deviceId')!);
         final api = GetIt.instance<DobavnicaApi>(); 
