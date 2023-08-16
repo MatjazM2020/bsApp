@@ -13,7 +13,7 @@ class DocumentList extends StatelessWidget {
       appBar: AppBar(),
       body: ListView.builder(
         itemCount: docls.length,
-        itemBuilder: (ctx, index) => Text( //TODO (KO BO NA DATABASE-U UPLOADAN SE LIST)
+        itemBuilder: (ctx, index) => Text( 
           docls[index].toString(),
         ),
       ),

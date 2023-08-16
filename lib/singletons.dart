@@ -9,7 +9,7 @@ GetIt locator = GetIt.instance;
 
 void setupLocator() {
   locator.registerSingleton<DobavnicaApi>(
-    DobavnicaApi.create(baseUrl: Uri.parse(Constants.baseUrl), interceptors: [AuthInterceptor]), //ne rabis passat notr tokena, ker to handlas v interceptorju 
+    DobavnicaApi.create(baseUrl: Uri.parse(Constants.baseUrl)), //ne rabis passat notr tokena, ker to handlas v interceptorju 
   );
   locator.registerSingleton<Uuid>(
     const Uuid()
