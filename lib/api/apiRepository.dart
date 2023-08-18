@@ -23,14 +23,15 @@ class ApiCalls{
                   },
                   child: const Text('ok'),
                 ),
-              ]);
-        });
+              ]
+           );
+        }
+     );
   } 
-  void performApiCalls(CreateTransportHandlerModel x, context) async{
 
+
+  Future<void> createNewHandlerPost(CreateTransportHandlerModel x, context) async{
     final response1 = await dobavnicaApi.apiAnonymousTenantPubCompanyDocumentSigningDeviceCreateNewHandlerPost(tenant: Constants.tenant, company: Constants.company, body: x);
-      
-      print('this is the first response.........:' + response1.toString()); 
       if (response1.isSuccessful){
         if (response1.body == null){
           showPopupError(context, 'Please enter a valid VAT number');
@@ -41,10 +42,7 @@ class ApiCalls{
           prefs.setString('id', id); 
           prefs.setString('deviceId', deviceId); 
 
-
           final response2 = await dobavnicaApi.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
-          print('this is the second response.................:'+ response2.body.toString());
-
           if (response2.isSuccessful) {
             if (response2.body != null){
               router.go(Constants.documentPath, extra: response2.body);

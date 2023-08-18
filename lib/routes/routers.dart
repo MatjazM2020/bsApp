@@ -27,7 +27,7 @@ final GoRouter router = GoRouter(
         List<ClaimDocumentsResponse> docls =
             state.extra as List<ClaimDocumentsResponse>;
         return DocumentList(
-          docls: docls,
+        //  docls: docls,
         );
       },
     ),

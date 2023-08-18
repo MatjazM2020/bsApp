@@ -33,10 +33,15 @@ class _RegisterState extends State<Register> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.greenAccent,
+                  ),
                   child: const Text('ok'),
                 ),
-              ]);
-        });
+              ]
+           );
+        }
+     );
   }
 
 
@@ -101,6 +106,6 @@ class _RegisterState extends State<Register> {
         email: _inputValues[5],
         deviceId: uuid.v4());
     final ac = ApiCalls(); 
-    ac.performApiCalls(x, context);
+    await ac.createNewHandlerPost(x, context);
   }
 }

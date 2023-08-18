@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class LoadingScreen extends StatefulWidget {
+   
   const LoadingScreen({super.key});
   @override
   State<LoadingScreen> createState() {
@@ -14,6 +15,7 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
   final LoadingCubit _loadingCubit = LoadingCubit();
 
   @override
