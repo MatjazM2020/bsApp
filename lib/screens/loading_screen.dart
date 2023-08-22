@@ -44,7 +44,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           );
         } else if (state is LoadingSuccessState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-          router.go(Constants.documentPath, extra: state.extraData); //ta extra data dobis vn iz api klica v loading_cubit 
+          router.go(Constants.documentPath, extra: state.extraData); 
         });
           return const Scaffold();
         } else {

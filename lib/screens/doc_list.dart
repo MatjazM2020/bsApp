@@ -7,48 +7,40 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DocumentList extends StatelessWidget {
-  DocumentList({super.key/*, required this.docls*/}); //to sem zakomentiral, ker nastavim tuki docls (dokler ne dobim lista iz serverja, ker ni se uspelo)
-  //final List<ClaimDocumentsResponse> docls; // 
-  final docls = [
-    ClaimDocumentsResponse(
-      id: '1',
-      signatoryName: 'John Doe',
-      signatoryAddress: '123 Main St',
-      numberOfRejectedImages: 5,
-      //status: 'Pending',
-    ),
-    ClaimDocumentsResponse(
-      id: '2',
-      signatoryName: 'Jane Smith',
-      signatoryAddress: '456 Elm St',
-      numberOfRejectedImages: 3,
-      //status: 'Approved',
-    ),
-  ];
-
+  DocumentList(
+      {super.key , required this.docls}); 
+  final List<ClaimDocumentsResponse> docls;  
+ 
 
   @override
   Widget build(BuildContext context) {
-    print(docls);
-    return Scaffold(
+      return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('Dobavnice', textAlign: TextAlign.left, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text('Dobavnice',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       ),
-
+      
+      bottomNavigationBar:
+          BottomNavigationBar(items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dobavnice'),
+        BottomNavigationBarItem(icon: Icon(Icons.fit_screen_sharp), label: 'Scan'),
+        BottomNavigationBarItem(icon:Icon(Icons.settings), label: 'Nastavitve')
+      ]),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
-          children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.visibility)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.create_new_folder)),
-          ],
+            children: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.visibility)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.create_new_folder)),
+            ],
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextFormField(
               decoration: const InputDecoration(
@@ -63,65 +55,31 @@ class DocumentList extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: docls.length,
-              itemBuilder: (ctx, index){
-                final document = docls[index]; 
+              itemBuilder: (ctx, index) {
+                final document = docls[index];
                 return GestureDetector(
-                  onTap: (){
-                    print('you clicked on $index thing'); 
-                  },
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          document.signatoryName ?? '',
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
-                        ),
-                        Text(
-                          document.signatoryAddress ?? '',
-                          style: const TextStyle(fontSize: 14)
-                        ),
-                        Text(
-                          '${document.numberOfRejectedImages ?? '' }', //to nism zihr ker v xaml je numOfConfPackets/numOfPackets
-                          style: const TextStyle(fontSize: 14),
+                    onTap: () {
+                    },
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(document.signatoryName ?? '',
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text(document.signatoryAddress ?? '',
+                              style: const TextStyle(fontSize: 14)),
+                          Text(
+                            '${document.numberOfRejectedImages ?? ''}', 
+                            style: const TextStyle(fontSize: 14),
                           ),
-                        /*Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(document.status.toString(), //to tudi nism zihr ka ni string 
-                            style: const TextStyle(fontSize: 14)) 
-                          ],),*/
-                      ],
-                    ),
+                        ],
+                     ),
                   )
                 );
               },
             ),
           ),
-           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('Dobavnice'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('Scan'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('Settings'),
-                ),
-              ],
-            ),
-          )
-          
         ],
       ),
     );

@@ -44,15 +44,9 @@ class ApiCalls{
 
           final response2 = await dobavnicaApi.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
           if (response2.isSuccessful) {
-            if (response2.body != null){
-              router.go(Constants.documentPath, extra: response2.body);
-             }
-           }else{
-            showPopupError(context, 'An error occured on the server side');
-          }
+              router.go(Constants.documentPath, extra: response2.body);                    
         }
       }
     }
  }
-
- 
+}

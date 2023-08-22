@@ -9,11 +9,10 @@ part 'loading_state.dart';
 
 class LoadingCubit extends Cubit<LoadingState> {
   LoadingCubit() : super(LoadingInitialState());
-
+  
   Future<void> fetchDataAndNavigate() async{
     
     final prefs = await SharedPreferences.getInstance();
-
     String id = prefs.getString('id') ?? '';
     String deviceId = prefs.getString('deviceId') ?? ''; 
     if(id == '' || deviceId == ''){
