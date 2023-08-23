@@ -15,7 +15,6 @@ class AuthInterceptor implements RequestInterceptor {
         String? token = response2.body!.token;
         prefs.setString('expires', expires.toString());
         prefs.setString('token', token.toString()); 
-
     }
 
 

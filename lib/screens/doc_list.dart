@@ -1,4 +1,5 @@
 import 'package:dobavnice_app/api/authInceptor.dart';
+import 'package:dobavnice_app/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart';
@@ -6,60 +7,163 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+class CustomVerticalDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: 24,
+      color: Colors.grey,
+    );
+  }
+}
+
 class DocumentList extends StatelessWidget {
-  DocumentList(
-      {super.key , required this.docls}); 
-  final List<ClaimDocumentsResponse> docls;  
- 
+  DocumentList({super.key, required this.docls});
+  final List<ClaimDocumentsResponse> docls;
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         title: const Text('Dobavnice',
             textAlign: TextAlign.left,
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       ),
-      
-      bottomNavigationBar:
-          BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Dobavnice'),
-        BottomNavigationBarItem(icon: Icon(Icons.fit_screen_sharp), label: 'Scan'),
-        BottomNavigationBarItem(icon:Icon(Icons.settings), label: 'Nastavitve')
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage(Constants.homeImgPath)),
+                label: 'Dobavnice', ),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage(Constants.scanImgPath)),
+                label: 'Scan'),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage(Constants.settingsImgPath)),
+                label: 'Nastavitve')
+          ],
+          onTap: (int index) {
+            if (index == 0) {
+              // router.go(Constants.documentPath);
+            } else if (index == 1) {
+              router.go(Constants.scanPath);
+            } else {
+              // router.go(Constants.settingsPath); TODO
+            }
+          }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+           Divider(height: 1, color: const Color.fromARGB(255, 137, 138, 138)),
           Row(
+            // za videt da je problem v slikah )
             children: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.visibility)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.create_new_folder)),
+              Expanded(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(Constants.newItemImgPath))),
+              CustomVerticalDivider(),
+              Expanded(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(Constants.editImgPath))),
+              CustomVerticalDivider(),
+              Expanded(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(Constants.displayImgPath))),
+              CustomVerticalDivider(),
+              Expanded(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(Constants.deleteImgPath))),
+              CustomVerticalDivider(),
+              Expanded(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(Constants.createNewImgPath))),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Search...',
-                prefixIcon: Icon(Icons.search),
-              ),
-              onChanged: (value) {
-                // Handle search input
-              },
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
+            decoration: const BoxDecoration(
+              border: Border(
+                  top: BorderSide(color: Colors.grey),
+                  bottom: BorderSide(color: Colors.grey)),
+            ),
+            child: Row(
+              children: [
+                const Text(
+                  'Heading',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 104, 173, 229),
+                      fontFamily: 'SourceSansProBold',
+                ),),
+                const Spacer(),
+                IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(Constants.hamburgerPath)),
+              ],
             ),
           ),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 247, 251, 254),
+            ),
+            child: Center(
+              child: Text(
+                '12 items',
+                style: TextStyle(
+                  color: Colors.grey[600],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 15.0,
+            color: Colors.grey[100], // Very light gray background color
+          ),
+          Divider(height: 1, color: Colors.blueGrey[100]),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                color: Color.fromARGB(255, 243, 242, 242)),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Search...',
+                    ),
+                    onChanged: (value) {
+                      // Handle search input
+                    },
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    // Handle search action
+                  },
+                  icon: Image.asset(Constants.magnifyingGlassPath),
+                ),
+              ],
+            ),
+          ),
+          Divider(height: 1, color: Colors.blueGrey[100]),
           Expanded(
             child: ListView.builder(
               itemCount: docls.length,
               itemBuilder: (ctx, index) {
                 final document = docls[index];
                 return GestureDetector(
-                    onTap: () {
-                    },
+                    onTap: () {},
                     child: Card(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,13 +174,12 @@ class DocumentList extends StatelessWidget {
                           Text(document.signatoryAddress ?? '',
                               style: const TextStyle(fontSize: 14)),
                           Text(
-                            '${document.numberOfRejectedImages ?? ''}', 
+                            '${document.numberOfRejectedImages ?? ''}',
                             style: const TextStyle(fontSize: 14),
                           ),
                         ],
-                     ),
-                  )
-                );
+                      ),
+                    ));
               },
             ),
           ),

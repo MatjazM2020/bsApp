@@ -1,6 +1,9 @@
 part of 'document_list_cubit.dart';
 
-@immutable
-sealed class DocumentListState {}
+abstract class DocumentListState {}
 
-final class DocumentListInitial extends DocumentListState {}
+class DocumentListInitial extends DocumentListState {}
+class DocumentListScan extends DocumentListState {}
+class DocumentListHome extends DocumentListState {}
+class DocumentListSettings extends DocumentListState{}
+
