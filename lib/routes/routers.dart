@@ -3,7 +3,7 @@ import 'package:dobavnice_app/screens/scan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dobavnice_app/screens/register.dart';
-import 'package:dobavnice_app/screens/doc_list.dart';
+import 'package:dobavnice_app/screens/document_list.dart';
 import 'package:dobavnice_app/screens/loading_screen.dart';
 
 

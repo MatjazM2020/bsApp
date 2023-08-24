@@ -20,7 +20,7 @@ class Constants{
   static const createNewImgPath = 'assets/images/createNew1.png'; 
   static const magnifyingGlassPath = 'assets/images/magnifyingGlass.png'; 
   static const hamburgerPath = 'assets/images/hamburger1.png'; 
-
+  static const signImgPath = 'assets/images/sign.png'; 
   
   static const bold = 'SourceSansProBold';
   static const regular = 'SourceSandProRegular';

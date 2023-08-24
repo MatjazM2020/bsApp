@@ -1,12 +1,8 @@
-import 'package:dobavnice_app/cubit/loading_cubit.dart';
-import 'package:dobavnice_app/models/constants.dart';
-import 'package:dobavnice_app/routes/routers.dart';
+import 'package:dobavnice_app/logic/cubit/loading_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class LoadingScreen extends StatefulWidget {
-   
+class LoadingScreen extends StatefulWidget {   
   const LoadingScreen({super.key});
   @override
   State<LoadingScreen> createState() {
@@ -31,29 +27,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<LoadingCubit, LoadingState>(
-      bloc: _loadingCubit,
-      builder: (context, state){
-        if (state is LoadingInitialState) {
+  Widget build(BuildContext context){
           return const Scaffold(
             body: Center(
               child:
                   CircularProgressIndicator(), 
             ),
-          );
-        } else if (state is LoadingSuccessState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-          router.go(Constants.documentPath, extra: state.extraData); 
-        });
-          return const Scaffold();
-        } else {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-           router.go(Constants.registerPath);
-        });
-          return const Scaffold(); 
-        }
-      },
-    );
-  }
+        );
+    }
 }

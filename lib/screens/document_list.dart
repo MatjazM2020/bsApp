@@ -1,13 +1,10 @@
-import 'package:dobavnice_app/api/authInceptor.dart';
-import 'package:dobavnice_app/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomVerticalDivider extends StatelessWidget {
+  const CustomVerticalDivider({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,8 +15,26 @@ class CustomVerticalDivider extends StatelessWidget {
   }
 }
 
+IconButton buildIconButton(String imagePath, String buttonText) {
+  return IconButton(
+    onPressed: () {},
+    icon: Column(
+      children: [
+        Image.asset(imagePath),
+        const SizedBox(
+          height: 1,
+        ),
+        Text(
+          buttonText,
+          style: const TextStyle(fontSize: 9, fontFamily: Constants.semiBold),
+        )
+      ],
+    ),
+  );
+}
+
 class DocumentList extends StatelessWidget {
-  DocumentList({super.key, required this.docls});
+  const DocumentList({super.key, required this.docls});
   final List<ClaimDocumentsResponse> docls;
 
   @override
@@ -35,8 +50,9 @@ class DocumentList extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(Constants.homeImgPath)),
-                label: 'Dobavnice', ),
+              icon: ImageIcon(AssetImage(Constants.homeImgPath)),
+              label: 'Dobavnice',
+            ),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage(Constants.scanImgPath)),
                 label: 'Scan'),
@@ -56,35 +72,12 @@ class DocumentList extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-           Divider(height: 1, color: const Color.fromARGB(255, 137, 138, 138)),
+          const Divider(height: 1, color: Color.fromARGB(255, 137, 138, 138)),
           Row(
-            // za videt da je problem v slikah )
-            children: [
-              Expanded(
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(Constants.newItemImgPath))),
-              CustomVerticalDivider(),
-              Expanded(
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(Constants.editImgPath))),
-              CustomVerticalDivider(),
-              Expanded(
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(Constants.displayImgPath))),
-              CustomVerticalDivider(),
-              Expanded(
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(Constants.deleteImgPath))),
-              CustomVerticalDivider(),
-              Expanded(
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(Constants.createNewImgPath))),
-            ],
+           children: [
+            const SizedBox(width:20),
+            buildIconButton(Constants.signImgPath, 'Podpiši'),
+           ],
           ),
           Container(
             padding:
@@ -99,9 +92,11 @@ class DocumentList extends StatelessWidget {
                 const Text(
                   'Heading',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 104, 173, 229),
-                      fontFamily: 'SourceSansProBold',
-                ),),
+                    color: Color(0xff489FE8),
+                    fontFamily: Constants.semiBold,
+                    fontSize: 16,
+                  ),
+                ),
                 const Spacer(),
                 IconButton(
                     onPressed: () {},
@@ -110,8 +105,8 @@ class DocumentList extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(8.0),
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 247, 251, 254),
             ),
             child: Center(
@@ -133,7 +128,7 @@ class DocumentList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
-                color: Color.fromARGB(255, 243, 242, 242)),
+                color: const Color.fromARGB(255, 243, 242, 242)),
             child: Row(
               children: [
                 Expanded(

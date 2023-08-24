@@ -7,25 +7,30 @@ import 'package:dobavnice_app/api/authInceptor.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 
+
+
 class ScanScreen extends StatefulWidget{
   const ScanScreen({super.key});
   @override
   State<StatefulWidget> createState() => _ScanPageState();
 }
 
+
+
 class _ScanPageState extends State<ScanScreen>{
  @override
  Widget build(BuildContext context){
   return Scaffold(appBar: AppBar(title: const Text('Scan')),
   body: MobileScanner(onDetect: (capture){
-        final List<Barcode> barcodes = capture.barcodes;
-        final dobavnicaApi = GetIt.instance<DobavnicaApi>(); 
+        try{
+          final barcode = capture.barcodes[0];
+          final api = GetIt.instance<DobavnicaApi>();          
+          api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barcode.rawValue)); 
+          ///tle naprej........
 
-          for (final barcode in barcodes){
-              //klice in logiko v CUBITU...
-              //dobavnicaApi.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: barcode.rawValue)
-              barcode.rawValue;
-          }
+        }catch(e){
+            print(e); 
+        }
         } 
       )
     );
