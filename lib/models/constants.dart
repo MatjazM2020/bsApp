@@ -9,6 +9,7 @@ class Constants{
   static const documentPath = '/document'; 
   static const registerPath = '/register'; 
   static const scanPath = '/scan';
+  static const documentDetailView = '/documentDetailView'; 
 
   static const homeImgPath = 'assets/images/home1.png';
   static const scanImgPath = 'assets/images/scan1.png';
@@ -21,7 +22,10 @@ class Constants{
   static const magnifyingGlassPath = 'assets/images/magnifyingGlass.png'; 
   static const hamburgerPath = 'assets/images/hamburger1.png'; 
   static const signImgPath = 'assets/images/sign.png'; 
-  
+  static const backImgpath = 'assets/images/back.png'; 
+  static const moreImgPath = 'assets/images/more.png'; 
+
+
   static const bold = 'SourceSansProBold';
   static const regular = 'SourceSandProRegular';
   static const semiBold = 'SourceSandProSemiBold';

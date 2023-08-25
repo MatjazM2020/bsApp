@@ -3,8 +3,6 @@ import 'package:dobavnice_app/models/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:dobavnice_app/api/authInceptor.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 
 
@@ -25,8 +23,16 @@ class _ScanPageState extends State<ScanScreen>{
         try{
           final barcode = capture.barcodes[0];
           final api = GetIt.instance<DobavnicaApi>();          
-          api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barcode.rawValue)); 
-          ///tle naprej........
+          final resp = api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barcode.rawValue)); 
+          /*
+            -> if dobavnica exists in database ---- redirrect v screen 3/13
+            -> if dobavnica doesnt yet exist ----- redirrect v screen kjer je info od paketa(dobavnice)
+            
+           tle spisem logiko, ki jo zatem spravim v cubit posebi... 
+           torej rabmo router d gremo v bodisi prvi zaslon bodisi drugi 
+           
+
+          */
 
         }catch(e){
             print(e); 

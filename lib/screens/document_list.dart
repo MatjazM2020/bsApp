@@ -2,36 +2,7 @@ import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart';
 import 'package:flutter/material.dart';
-
-class CustomVerticalDivider extends StatelessWidget {
-  const CustomVerticalDivider({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 1,
-      height: 24,
-      color: Colors.grey,
-    );
-  }
-}
-
-IconButton buildIconButton(String imagePath, String buttonText) {
-  return IconButton(
-    onPressed: () {},
-    icon: Column(
-      children: [
-        Image.asset(imagePath),
-        const SizedBox(
-          height: 1,
-        ),
-        Text(
-          buttonText,
-          style: const TextStyle(fontSize: 9, fontFamily: Constants.semiBold),
-        )
-      ],
-    ),
-  );
-}
+import 'package:dobavnice_app/screens/base_screen.dart';
 
 class DocumentList extends StatelessWidget {
   const DocumentList({super.key, required this.docls});
@@ -39,14 +10,7 @@ class DocumentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text('Dobavnice',
-            textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-      ),
+    return BaseScreen(
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -68,16 +32,16 @@ class DocumentList extends StatelessWidget {
             } else {
               // router.go(Constants.settingsPath); TODO
             }
-          }),
+      }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Divider(height: 1, color: Color.fromARGB(255, 137, 138, 138)),
           Row(
-           children: [
-            const SizedBox(width:20),
-            buildIconButton(Constants.signImgPath, 'Podpiši'),
-           ],
+            children: [
+              const SizedBox(width: 20),
+              buildIconButton(Constants.signImgPath, 'Podpiši'),
+            ],
           ),
           Container(
             padding:
@@ -137,15 +101,11 @@ class DocumentList extends StatelessWidget {
                       border: InputBorder.none,
                       hintText: 'Search...',
                     ),
-                    onChanged: (value) {
-                      // Handle search input
-                    },
+                    onChanged: (value) {},
                   ),
                 ),
                 IconButton(
-                  onPressed: () {
-                    // Handle search action
-                  },
+                  onPressed: () {},
                   icon: Image.asset(Constants.magnifyingGlassPath),
                 ),
               ],

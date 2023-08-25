@@ -24,6 +24,7 @@ class LoadingCubit extends Cubit<LoadingState> {
     DobavnicaApi api = locator<DobavnicaApi>();  
     final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
     router.go(Constants.documentPath, extra: response.body);  
+
     }
   }    
 }

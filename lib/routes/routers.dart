@@ -1,4 +1,5 @@
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
+import 'package:dobavnice_app/screens/document_detail_view.dart';
 import 'package:dobavnice_app/screens/scan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,13 +13,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return LoadingScreen();
+        return const LoadingScreen();
       },
     ),
     GoRoute(
       path: '/register',
       builder: (BuildContext context, GoRouterState state) {
-        return Register();
+        return const Register();
       },
     ),
     GoRoute(
@@ -34,7 +35,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/scan',
       builder: (BuildContext context, GoRouterState state) {
-        return ScanScreen();
+        return const ScanScreen();
+      },
+    ),
+    GoRoute(path: '/documentDetailView',
+    builder: (BuildContext context, GoRouterState state) {
+        return const DocumentDetailView();
       },
     )
   ],

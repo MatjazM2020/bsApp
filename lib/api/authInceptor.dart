@@ -1,7 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/models/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

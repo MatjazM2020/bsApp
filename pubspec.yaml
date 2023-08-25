@@ -78,6 +78,8 @@ flutter:
     - assets/images/createNew1.png
     - assets/images/magnifyingGlass.png
     - assets/images/hamburger1.png
+    - assets/images/back.png
+    - assets/images/more.png
 
   fonts:
     - family: SourceSansProBold
