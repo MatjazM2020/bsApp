@@ -1,5 +1,6 @@
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/screens/document_detail_view.dart';
+import 'package:dobavnice_app/screens/packet_detail_view.dart';
 import 'package:dobavnice_app/screens/scan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -42,6 +43,12 @@ final GoRouter router = GoRouter(
     builder: (BuildContext context, GoRouterState state) {
         return const DocumentDetailView();
       },
-    )
+    ),
+    GoRoute(
+      path: '/packetDetailView',
+      builder: (BuildContext context, GoRouterState state) {
+        return PacketDetailview();
+      },
+    ),
   ],
 );

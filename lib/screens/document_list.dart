@@ -7,10 +7,19 @@ import 'package:dobavnice_app/screens/base_screen.dart';
 class DocumentList extends StatelessWidget {
   const DocumentList({super.key, required this.docls});
   final List<ClaimDocumentsResponse> docls;
+  
+  String numberOfItems(){
+     if(docls.length == 1){
+          return docls.length.toString() + ' item';
+      }else{
+          return docls.length.toString() + ' items';
+      }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
+      text: 'Dobavnice', 
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -75,7 +84,7 @@ class DocumentList extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '12 items',
+                numberOfItems(),
                 style: TextStyle(
                   color: Colors.grey[600],
                 ),
@@ -132,6 +141,7 @@ class DocumentList extends StatelessWidget {
                             '${document.numberOfRejectedImages ?? ''}',
                             style: const TextStyle(fontSize: 14),
                           ),
+                          TextButton(child: const Text('ayo'), onPressed: () => print(document.id),)
                         ],
                       ),
                     ));

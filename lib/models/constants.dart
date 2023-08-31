@@ -1,4 +1,3 @@
-
 class Constants{
   static const tenant = 'FLBDev'; 
   static const company = 'FLB'; 
@@ -6,10 +5,13 @@ class Constants{
   static const authorizeDeviceUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/AuthorizeDevice';
   static const createNewHandlerUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/CreateNewHandler'; 
   
+  
   static const documentPath = '/document'; 
   static const registerPath = '/register'; 
   static const scanPath = '/scan';
-  static const documentDetailView = '/documentDetailView'; 
+  static const documentDetailViewPath = '/documentDetailView'; 
+  static const packetDetailViewPath = '/packetDetailView'; 
+
 
   static const homeImgPath = 'assets/images/home1.png';
   static const scanImgPath = 'assets/images/scan1.png';

@@ -26,10 +26,12 @@ class DocumentDetailView extends StatefulWidget {
   }
 }
 
+
 class _DocumentDetailViewState extends State<DocumentDetailView> {
   @override
   Widget build(BuildContext context) {
     return  BaseScreen(
+      text: 'ŠtevilkaDobavnice TODO', 
       buttonBeginning: IconButton(onPressed: (){}, icon: Image.asset(Constants.backImgpath)),
       body: const Center(
         child: Text('data'),
@@ -37,3 +39,7 @@ class _DocumentDetailViewState extends State<DocumentDetailView> {
     );
   }
 }
+
+
+
+
