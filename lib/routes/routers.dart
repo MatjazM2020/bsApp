@@ -1,8 +1,11 @@
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
+import 'package:dobavnice_app/logic/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/screens/document_detail_view.dart';
 import 'package:dobavnice_app/screens/packet_detail_view.dart';
 import 'package:dobavnice_app/screens/scan_screen.dart';
+import 'package:dobavnice_app/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dobavnice_app/screens/register.dart';
 import 'package:dobavnice_app/screens/document_list.dart';
@@ -26,12 +29,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/document',
       builder: (BuildContext context, GoRouterState state) {
-        List<ClaimDocumentsResponse> docls =
-            state.extra as List<ClaimDocumentsResponse>;
-        return DocumentList(
-          docls: docls,
-        );
-      },
+      final documentListCubit = context.read<DocumentListCubit>();
+      List<ClaimDocumentsResponse> docls =
+          state.extra as List<ClaimDocumentsResponse>;
+      documentListCubit.setDocumentList(docls);
+      return DocumentList(docls: docls);
+    },
     ),
     GoRoute(
       path: '/scan',
@@ -41,13 +44,19 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: '/documentDetailView',
     builder: (BuildContext context, GoRouterState state) {
-        return const DocumentDetailView();
+        return DocumentDetailView();
       },
     ),
     GoRoute(
       path: '/packetDetailView',
       builder: (BuildContext context, GoRouterState state) {
         return PacketDetailview();
+      },
+    ),
+    GoRoute(
+      path: '/settings',
+      builder: (BuildContext context, GoRouterState state) {
+        return SettingsScreen();
       },
     ),
   ],

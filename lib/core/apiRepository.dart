@@ -44,7 +44,7 @@ class ApiCalls{
 
           final response2 = await dobavnicaApi.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
           if (response2.isSuccessful) {
-              router.go(Constants.documentPath, extra: response2.body);                    
+              router.go(Constants.homeDocumentPath, extra: response2.body);                    
         }
       }
     }

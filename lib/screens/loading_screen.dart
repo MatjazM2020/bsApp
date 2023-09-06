@@ -15,7 +15,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   final LoadingCubit _loadingCubit = LoadingCubit();
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     _loadingCubit.fetchDataAndNavigate(context);
   }

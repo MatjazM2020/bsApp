@@ -4,13 +4,15 @@ class Constants{
   static const baseUrl = 'https://devapp.flowbase.com/'; 
   static const authorizeDeviceUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/AuthorizeDevice';
   static const createNewHandlerUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/CreateNewHandler'; 
+  static const settings = 'Settings'; 
   
   
-  static const documentPath = '/document'; 
+  static const homeDocumentPath = '/document'; 
   static const registerPath = '/register'; 
   static const scanPath = '/scan';
   static const documentDetailViewPath = '/documentDetailView'; 
   static const packetDetailViewPath = '/packetDetailView'; 
+  static const settingsPath = '/settings'; 
 
 
   static const homeImgPath = 'assets/images/home1.png';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 
-IconButton buildIconButton(String imagePath, String buttonText) {
+IconButton buildIconButton(String imagePath, String buttonText){
   return IconButton(
     onPressed: () {},
     icon: Column(
@@ -20,6 +20,7 @@ IconButton buildIconButton(String imagePath, String buttonText) {
     ),
   );
 }
+
 
 class BaseScreen extends StatelessWidget {
   const BaseScreen({super.key,required this.body, this.bottomNavigationBar, this.buttonBeginning, this.buttonEnd, required this.text});

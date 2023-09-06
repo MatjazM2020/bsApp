@@ -13,7 +13,7 @@ part 'loading_state.dart';
 
 
 
-class LoadingCubit extends Cubit<LoadingState> {
+class LoadingCubit extends Cubit<LoadingState>{
   LoadingCubit() : super(LoadingInitialState());
 
   Future<void> fetchDataAndNavigate(BuildContext context) async{
@@ -28,7 +28,7 @@ class LoadingCubit extends Cubit<LoadingState> {
     final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
     final documentListCubit = context.read<DocumentListCubit>();
     documentListCubit.setDocumentList(response.body!);
-    router.go(Constants.documentPath, extra: response.body);  
+    router.go(Constants.homeDocumentPath, extra: response.body);  
     }
   }    
 }
