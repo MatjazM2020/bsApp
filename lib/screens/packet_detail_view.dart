@@ -9,12 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class PacketDetailview extends StatelessWidget {
   @override
   Widget build(context) {
-    final LoadingCubit loadingCubit = LoadingCubit();
+    final loadingCubit = context.read<LoadingCubit>();
     final docls = context.watch<DocumentListCubit>();
     return BaseScreen(
       buttonBeginning: IconButton(onPressed: (){loadingCubit.fetchDataAndNavigate(context);}, icon: Image.asset(Constants.backImgpath)),
       body: Column(
-        children: [
+        children:[
           ListTile(title: Text('Name: ${docls.state[0].signatoryName!}')),
           ListTile(title: Text('Address: ${docls.state[0].signatoryAddress!}')),
           ListTile(title: Text('PostCode: ${docls.state[0].signatoryPostCode!}')),

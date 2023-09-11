@@ -13,7 +13,8 @@ class Constants{
   static const documentDetailViewPath = '/documentDetailView'; 
   static const packetDetailViewPath = '/packetDetailView'; 
   static const settingsPath = '/settings'; 
-
+  static const signaturePath = '/signature'; 
+  
 
   static const homeImgPath = 'assets/images/home1.png';
   static const scanImgPath = 'assets/images/scan1.png';

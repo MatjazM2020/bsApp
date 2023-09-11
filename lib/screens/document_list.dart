@@ -1,29 +1,30 @@
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
+import 'package:dobavnice_app/logic/cubit/document_detail_get_packets_cubit.dart';
 import 'package:dobavnice_app/logic/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/logic/cubit/loading_cubit.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:dobavnice_app/screens/base_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class DocumentList extends StatelessWidget {
   DocumentList({super.key, required this.docls});
   final List<ClaimDocumentsResponse> docls;
-  
-  String numberOfItems(){
-     if(docls.length == 1){
-          return '${docls.length} item';
-      }else{
-          return '${docls.length} items';
-      }
+  String numberOfItems() {
+    if (docls.length == 1) {
+      return '${docls.length} item';
+    } else {
+      return '${docls.length} items';
+    }
   }
+
   
-    final DocumentListCubit documentListCubit = DocumentListCubit();
-     final LoadingCubit loadingCubit = LoadingCubit();
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      text: 'Dobavnice', 
+      text: 'Dobavnice',
       bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -38,15 +39,14 @@ class DocumentList extends StatelessWidget {
                 label: 'Nastavitve')
           ],
           onTap: (int index) {
-            if(index == 0){
-              loadingCubit.fetchDataAndNavigate(context); 
-            }else if (index == 1){
+            if (index == 0) {
+              context.read<LoadingCubit>().fetchDataAndNavigate(context);
+            } else if (index == 1) {
               router.go(Constants.scanPath);
-            }else{
-             router.go(Constants.settingsPath);
+            } else {
+              router.go(Constants.settingsPath);
             }
-         }
-      ) ,
+          }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -54,7 +54,7 @@ class DocumentList extends StatelessWidget {
           Row(
             children: [
               const SizedBox(width: 20),
-              buildIconButton(Constants.signImgPath, 'Podpiši'),
+              IconButton(icon: Image.asset(Constants.signImgPath), onPressed: (){router.go(Constants.signaturePath);},)
             ],
           ),
           Container(
@@ -146,7 +146,12 @@ class DocumentList extends StatelessWidget {
                             '${document.numberOfRejectedImages ?? ''}',
                             style: const TextStyle(fontSize: 14),
                           ),
-                          TextButton(child: const Text('Show'), onPressed: (){documentListCubit.navigateToDocumentList();})
+                          TextButton(
+                              child: const Text('Show'),
+                              onPressed: () async{
+                                context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(document.id);
+                             }
+                           )
                         ],
                       ),
                     )
@@ -159,3 +164,6 @@ class DocumentList extends StatelessWidget {
     );
   }
 }
+
+
+//

@@ -1,5 +1,6 @@
 import 'package:dobavnice_app/logic/cubit/loading_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class LoadingScreen extends StatefulWidget {   
@@ -11,19 +12,10 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
-  final LoadingCubit _loadingCubit = LoadingCubit();
-
   @override
   void initState(){
     super.initState();
-    _loadingCubit.fetchDataAndNavigate(context);
-  }
-
-  @override
-  void dispose() {
-    _loadingCubit.close();
-    super.dispose();
+    context.read<LoadingCubit>().fetchDataAndNavigate(context);
   }
 
   @override

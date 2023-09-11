@@ -1,9 +1,11 @@
+
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/logic/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/screens/document_detail_view.dart';
 import 'package:dobavnice_app/screens/packet_detail_view.dart';
 import 'package:dobavnice_app/screens/scan_screen.dart';
 import 'package:dobavnice_app/screens/settings_screen.dart';
+import 'package:dobavnice_app/screens/signature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +46,8 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: '/documentDetailView',
     builder: (BuildContext context, GoRouterState state) {
-        return DocumentDetailView();
+      String? id = state.extra as String?;
+        return DocumentDetailView(id: id);
       },
     ),
     GoRoute(
@@ -57,6 +60,12 @@ final GoRouter router = GoRouter(
       path: '/settings',
       builder: (BuildContext context, GoRouterState state) {
         return SettingsScreen();
+      },
+    ),
+    GoRoute(
+      path: '/signature',
+      builder: (BuildContext context, GoRouterState state) {
+        return Sign();
       },
     ),
   ],
