@@ -1,6 +1,5 @@
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/logic/cubit/document_detail_get_packets_cubit.dart';
-import 'package:dobavnice_app/logic/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/logic/cubit/loading_cubit.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart';
@@ -9,9 +8,11 @@ import 'package:dobavnice_app/screens/base_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class DocumentList extends StatelessWidget {
-  DocumentList({super.key, required this.docls});
-  final List<ClaimDocumentsResponse> docls;
+  class DocumentList extends StatelessWidget {
+    const DocumentList({super.key, required this.docls}); 
+    final List<ClaimDocumentsResponse> docls;
+
+
   String numberOfItems() {
     if (docls.length == 1) {
       return '${docls.length} item';
@@ -20,7 +21,6 @@ class DocumentList extends StatelessWidget {
     }
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
@@ -109,7 +109,7 @@ class DocumentList extends StatelessWidget {
                 color: const Color.fromARGB(255, 243, 242, 242)),
             child: Row(
               children: [
-                Expanded(
+                Expanded(  
                   child: TextFormField(
                     decoration: const InputDecoration(
                       border: InputBorder.none,
@@ -127,7 +127,7 @@ class DocumentList extends StatelessWidget {
           ),
           Divider(height: 1, color: Colors.blueGrey[100]),
           Expanded(
-            child: ListView.builder(
+            child: ListView.builder( 
               itemCount: docls.length,
               itemBuilder: (ctx, index) {
                 final document = docls[index];
@@ -149,7 +149,8 @@ class DocumentList extends StatelessWidget {
                           TextButton(
                               child: const Text('Show'),
                               onPressed: () async{
-                                context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(document.id);
+                                await context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(document.documentSigningRequestId);
+                                router.go(Constants.documentDetailViewPath);
                              }
                            )
                         ],
@@ -164,6 +165,3 @@ class DocumentList extends StatelessWidget {
     );
   }
 }
-
-
-//

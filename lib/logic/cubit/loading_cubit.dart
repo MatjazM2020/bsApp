@@ -15,6 +15,10 @@ class LoadingCubit extends Cubit<LoadingState>{
 
   Future<void> fetchDataAndNavigate(BuildContext context) async{
     final prefs = await SharedPreferences.getInstance();
+
+    prefs.setString('id', '65030022274fb8d777456605'); //da ni potrebno registrirat novega (da gremo direkt na tega userja) -> to bomo izbrisali 
+    prefs.setString('deviceId', '2571586c-c886-486b-aeee-417fb905b106'); // da ni potrebano.... -> to bomo izbrisali 
+
     String id = prefs.getString('id') ?? '';
     String deviceId = prefs.getString('deviceId') ?? ''; 
 
@@ -23,7 +27,7 @@ class LoadingCubit extends Cubit<LoadingState>{
     }else{
     DobavnicaApi api = locator<DobavnicaApi>();  
     final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
-    final documentListCubit = context.read<DocumentListCubit>();
+    final documentListCubit = context.read<DocumentListCubit>(); 
     documentListCubit.setDocumentList(response.body!);
     router.go(Constants.homeDocumentPath, extra: response.body);  
     }

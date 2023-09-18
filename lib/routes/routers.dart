@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dobavnice_app/screens/register.dart';
-import 'package:dobavnice_app/screens/document_list.dart';
+import 'package:dobavnice_app/screens/home.dart';
 import 'package:dobavnice_app/screens/loading_screen.dart';
 
 
@@ -29,11 +29,10 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/document',
+      path: '/home',
       builder: (BuildContext context, GoRouterState state) {
       final documentListCubit = context.read<DocumentListCubit>();
-      List<ClaimDocumentsResponse> docls =
-          state.extra as List<ClaimDocumentsResponse>;
+      List<ClaimDocumentsResponse> docls = state.extra as List<ClaimDocumentsResponse>;
       documentListCubit.setDocumentList(docls);
       return DocumentList(docls: docls);
     },
@@ -53,7 +52,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/packetDetailView',
       builder: (BuildContext context, GoRouterState state) {
-        return PacketDetailview();
+        return const PacketDetailview();
       },
     ),
     GoRoute(

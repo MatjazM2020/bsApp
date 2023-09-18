@@ -1,13 +1,13 @@
 class Constants{
   static const tenant = 'FLBDev'; 
   static const company = 'FLB'; 
-  static const baseUrl = 'https://devapp.flowbase.com/'; 
+  static const baseUrl = 'http://devapp.devweb.b-s.si/'; 
   static const authorizeDeviceUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/AuthorizeDevice';
   static const createNewHandlerUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/CreateNewHandler'; 
   static const settings = 'Settings'; 
   
   
-  static const homeDocumentPath = '/document'; 
+  static const homeDocumentPath = '/home'; 
   static const registerPath = '/register'; 
   static const scanPath = '/scan';
   static const documentDetailViewPath = '/documentDetailView'; 

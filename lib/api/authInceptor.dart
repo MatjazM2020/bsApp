@@ -28,7 +28,6 @@ class AuthInterceptor implements RequestInterceptor {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token') ?? '';
     String expires = prefs.getString('expires') ?? '';
-
     if (token.isNotEmpty) {
       DateTime expirationTime = DateTime.parse(expires);
       DateTime currentTime = DateTime.now();
