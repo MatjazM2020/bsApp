@@ -17,4 +17,5 @@ class DocumentDetailGetPacketsCubit extends Cubit<ClaimDocumentsResponse> {
     final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments()); 
     setDocumentList(response.body!.firstWhere((element) => element.documentSigningRequestId == id));  
   }
+
 }

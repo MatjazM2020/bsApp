@@ -5,39 +5,61 @@ import 'package:dobavnice_app/screens/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
 class PacketDetailview extends StatefulWidget {
-  const PacketDetailview({super.key}); 
+  const PacketDetailview({super.key});
   @override
   State<StatefulWidget> createState() {
-    return _PacketDetailviewState(); 
+    return _PacketDetailviewState();
   }
 }
 
-class _PacketDetailviewState extends State<PacketDetailview>{
-@override
+class _PacketDetailviewState extends State<PacketDetailview> {
+  @override
   Widget build(context) {
     final packetDetailCubit = context.read<PacketDetailCubit>();
-    final packetInfo = packetDetailCubit.state; 
- 
+    final packetInfo = packetDetailCubit.state;
+
     return BaseScreen(
-      buttonBeginning: IconButton(onPressed: (){router.go(Constants.documentDetailViewPath);}, icon: Image.asset(Constants.backImgpath)),
-      body: Column(
-        children:[
-          ListTile(title: Text(packetInfo.signatoryName!),), 
-          ListTile(title: Text(packetInfo.signatoryAddress!)),
-          ListTile(title: Text(packetInfo.signatoryPostCode!)),
-          ListTile(title: Text(packetInfo.signatoryCity!)),
-          ListTile(title: Text(packetInfo.signatoryEmail!)),
-          ListTile(title: Text(packetInfo.signatoryPhoneNo!))
-        ],
-      ),
-      text: 'Informacije'); 
-   }
+        buttonBeginning: IconButton(
+            onPressed: () {
+              router.go(Constants.documentDetailViewPath);
+            },
+            icon: Image.asset(Constants.backImgpath)),
+        body: Column(
+          children: [
+            ListTile(
+              title: Text(packetInfo.signatoryName!),
+            ),
+            ListTile(title: Text(packetInfo.signatoryAddress!)),
+            ListTile(title: Text(packetInfo.signatoryPostCode!)),
+            ListTile(title: Text(packetInfo.signatoryCity!)),
+            ListTile(title: Text(packetInfo.signatoryEmail!)),
+            ListTile(title: Text(packetInfo.signatoryPhoneNo!)),
+            GestureDetector(
+                onTap: () {packetDetailCubit.confirmDocumentResource(id: packetInfo.id, documentId: packetInfo.documentId!);},
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue, // Change the color to suit your design
+                  height: 60, // Adjust the height as needed
+                  child: const Text(
+                    'Confirm',
+                    style: TextStyle(
+                      color: Colors.white, // Change text color
+                      fontSize: 18, // Adjust text size
+                    ),
+                  ),
+                )),
+          ],
+        ),
+        text: 'Informacije');
+  }
 }
 
 
 
 
-  
+
+
+
+
+
