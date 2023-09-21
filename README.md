@@ -1,3 +1,3 @@
 # dobavnice_app
 
-I developed this app for the company I worked in. It is an app, for document signing. 
+Developed this document signing mobile application as a part of my work in a company. 
