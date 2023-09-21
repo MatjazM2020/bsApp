@@ -10,7 +10,9 @@ import 'package:get_it/get_it.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-
+/* INFO
+  This is the page for scanning QR codes. 
+*/
 
 class ScanScreen extends StatefulWidget{
   const ScanScreen({super.key});
@@ -63,60 +65,33 @@ class _ScanPageState extends State<ScanScreen>{
   final docls = context.watch<DocumentListCubit>();
   docls.updateDocuments(); 
   return Scaffold(appBar: AppBar(title: const Text('Scan')),
-  body: 
-   MobileScanner(
+  body:
+  MobileScanner(
     controller: _scannerController,
     onDetect: (capture) async {
         try{
-          String barcode = capture.barcodes[0].rawValue!; 
+          String barcode = capture.barcodes[0].rawValue!; //this is stored in the JWT format! The barcodes list will always contain just one element (thats why we access the first one in the list)
           final api = GetIt.instance<DobavnicaApi>(); 
-          Map<String, dynamic> decodedToken = JwtDecoder.decode(barcode);  //to bos mogoce rabu, ce poskeniras isto QR kodo v drugo.    
-          final resp = await api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barcode));
-          print(resp.body![0].id); 
-          print(decodedToken['id']); 
+          Map<String, dynamic> decodedToken = JwtDecoder.decode(barcode);  //We decoded the JWT token to use the information later (documentid (document) and resourceid (packet))
+          final resp = await api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barcode)); //claiming the document, after this call, 
+          //the document will get binded to the user, and only then will the documents be displayed in the home screen list (if we dont sign them immediately, so that they are unsigned documents)
 
-         if(docls.state.contains(resp.body![0])){ //ker ima vedno samo en element notr v listu 
+         if(docls.state.contains(resp.body![0])){ //If we have multiple packets in the same document, we update the state of the relevant cubit and navigate to the document_detail_view screen
           await context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(decodedToken['documentid']);
-          router.go(Constants.documentDetailViewPath);
+          router.go(Constants.documentDetailViewPath); 
           _scannerController?.dispose();
-          }else{
-          await context.read<PacketDetailCubit>().getPacketInfo(decodedToken['documentid'] , decodedToken['resourceid']);
+          }else{ //if there is only one packet in the document, we navigate to the packet_detail_view screen directly
+          await context.read<PacketDetailCubit>().getPacketInfo(decodedToken['documentid'], decodedToken['resourceid'] );
           router.go(Constants.packetDetailViewPath); 
           _scannerController?.dispose();
           }
         }catch(e){
           showPopupError(context, '$e its a problem'); 
-        }
-      } 
-     )
+         }
+       } 
+      )
     );
   }
 }
 
 
-
-
-/*TextButton(child: Text('eyo'),onPressed: ()async{ //testing widget (without the use of phone)
-          final api = GetIt.instance<DobavnicaApi>();          
-          String barCode = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiI2NGM4ZWI5MzU5N2UyYmRmZGY1Y2Y3Y2MiLCJpZCI6IjY1MDMwNmFlMjc0ZmI4ZDc3NzQ1NjY5ZCIsImRvY3VtZW50aWQiOiI2NTAzMDZlMDI3NGZiOGQ3Nzc0NTY2YWYiLCJyZXNvdXJjZWlkIjoiNTFhOWI0MGUtMTcxMC00MDI4LWE0OGMtOGU2ZGY4OWE0YjU3IiwiZXh0ZXJuYWxkb2N1bWVudGlkIjoiRVhURE9DMyIsImV4dGVybmFscmVzb3VyY2VpZCI6IkVYVFJFUzEzIiwibmJmIjoxNjk0Njk3MjE1LCJleHAiOjE3MjYzMTk2MTUsImlhdCI6MTY5NDY5NzIxNX0.zsG1-_JSGL406ss4VemQriv3Sk5fu0-7PCoehbvG6NU";
-          Map<String, dynamic> decodedToken = JwtDecoder.decode(barCode);
-
-          final resp = await api.apiPublicTenantPubCompanyDocumentSigningDeviceClaimDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ClaimDocumentsRequest(token: barCode));   
-
-           if(docls.state.contains(resp.body![0])){
-          await context.read<PacketDetailCubit>().getPacketInfo(decodedToken['documentid'], decodedToken['resourceid'] );
-
-          print('decodedToken[documentid] --------> ${decodedToken['documentid']}'); 
-          print('decodedToken[resourceid] --------> ${decodedToken['resourceid']}'); 
-          print('resp.body![0].id -------> ${resp.body![0].id}');
-          print('resp.body![0].resources![0].id -------> ${resp.body![0].resources![0].id}');
-          print('resp.body![0].resources![1].id -------> ${resp.body![0].resources![1].id}');
-
-          router.go(Constants.packetDetailViewPath); 
-          }else{
-          //await context.read<PacketDetailCubit>().getPacketInfo(decodedToken['id']);
-          //router.go(Constants.packetDetailViewPath); 
-          }
-  }, )*/
-
-          

@@ -5,7 +5,12 @@ import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart'; 
 
+/* INFO: 
+  In this file, we handle passing of registration data to the server, and registering the new user. 
+  Besides that, we use sharedPreferences, to save the id and deviceId of the user to the device which we are using. (sharedPreferences data is stored locally on the machine)
 
+  disclaimer: This code could be rather used in a cubit, but it works in this way also. 
+*/
 
 class ApiCalls{
    final dobavnicaApi = GetIt.instance<DobavnicaApi>(); 

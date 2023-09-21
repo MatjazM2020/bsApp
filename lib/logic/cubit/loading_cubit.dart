@@ -9,6 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dobavnice_app/routes/routers.dart';
 part 'loading_state.dart';
 
+/* INFO: 
+  This cubit is responsible for handling the entry point of our application. Here we decided whether we go to the register page or the home page. 
+*/ 
 
 class LoadingCubit extends Cubit<LoadingState>{
   LoadingCubit() : super(LoadingInitialState());
@@ -16,17 +19,14 @@ class LoadingCubit extends Cubit<LoadingState>{
   Future<void> fetchDataAndNavigate(BuildContext context) async{
     final prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('id', '65030022274fb8d777456605'); //da ni potrebno registrirat novega (da gremo direkt na tega userja) -> to bomo izbrisali 
-    prefs.setString('deviceId', '2571586c-c886-486b-aeee-417fb905b106'); // da ni potrebano.... -> to bomo izbrisali 
-
     String id = prefs.getString('id') ?? '';
     String deviceId = prefs.getString('deviceId') ?? ''; 
-
-    if(id == '' || deviceId == ''){
+  
+    if(id == '' || deviceId == ''){ //If we have not yet registered from this device, we navigate to the registration page
       router.go(Constants.registerPath);      
-    }else{
+    }else{ //if we have already registered, we navigate to the home page. 
     DobavnicaApi api = locator<DobavnicaApi>();  
-    final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments());
+    final response = await api.apiPublicTenantPubCompanyDocumentSigningDeviceListDocumentsPost(tenant: Constants.tenant, company: Constants.company, body: ListDocuments()); // disclaimer: this part could be put in a separate cubit
     final documentListCubit = context.read<DocumentListCubit>(); 
     documentListCubit.setDocumentList(response.body!);
     router.go(Constants.homeDocumentPath, extra: response.body);  

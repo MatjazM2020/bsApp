@@ -18,10 +18,10 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final List<String> _inputValues = List.filled(Constants.inputTexts.length, '');
-  final List<TextEditingController> _controllers = List.generate(Constants.inputTexts.length, (_) => TextEditingController());
-  Uuid uuid = GetIt.instance<Uuid>(); 
+  final List<TextEditingController> _controllers = List.generate(Constants.inputTexts.length, (_) => TextEditingController()); //controller, used to save the user input data in the form fields.
+  Uuid uuid = GetIt.instance<Uuid>();  //unique identification 
 
-   void showPopupError(BuildContext context, String errorMessage) {
+   void showPopupError(BuildContext context, String errorMessage) { //custom popup error message 
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -44,7 +44,6 @@ class _RegisterState extends State<Register> {
      );
   }
 
-
   @override
   Widget build(context) {
     return Scaffold(
@@ -65,10 +64,10 @@ class _RegisterState extends State<Register> {
                       labelText: Constants.inputTexts[index],
                     ),
                     onEditingComplete: () {
-                      if (index < Constants.inputTexts.length - 1) {
+                      if (index < Constants.inputTexts.length - 1) { //if we are not in the last field, we focus the scope on the next field
                         FocusScope.of(context).nextFocus();
                       } else {
-                        _submitForm();
+                        _submitForm(); //since we are in the last field, if we press enter, we submit the form 
                       }
                     },
                   ),
@@ -79,7 +78,7 @@ class _RegisterState extends State<Register> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () { //we also have the option of submitting the form by using the submit button
                     _submitForm();
                   },
                   child: const Text('Submit'),
@@ -93,7 +92,7 @@ class _RegisterState extends State<Register> {
   }
 
 
-  void _submitForm() async {
+  void _submitForm() async { //function that gets the data from the fields, and uses them for registering a new user 
     for (int i = 0; i < _inputValues.length; i++) {
       _inputValues[i] = _controllers[i].text;
     }

@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main(){
   setupLocator();
   runApp(
-    MultiBlocProvider(
+    MultiBlocProvider( //we use this, to provide all of the bloc instances - becouse we must use the same instances of blocs throughout the files. 
       providers: [
         BlocProvider(
           create: (context) => DocumentListCubit(),
@@ -26,7 +26,7 @@ void main(){
           create: (context) => PacketDetailCubit(),
         )
       ],
-      child: MaterialApp.router(
+      child: MaterialApp.router( //here we specify that we are using the go_router, and we can then use our routes/routers.dart file to control the navigations
         theme: AppTheme.lightTheme,
         routerConfig: router,
       ),

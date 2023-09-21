@@ -1,7 +1,11 @@
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:flutter/material.dart';
 
-
+/* INFO: 
+  Base screen, which is supposed to be used as a template for any other screen. 
+  We provide at most 5 arguments, 1 of which is required - the title (which is the argument - text)
+  The main part of the screen is passed as the body argument. 
+*/
 
 IconButton buildIconButton(String imagePath, String buttonText){
   return IconButton(
@@ -22,8 +26,8 @@ IconButton buildIconButton(String imagePath, String buttonText){
 }
 
 
-class BaseScreen extends StatelessWidget {
-  const BaseScreen({super.key,required this.body, this.bottomNavigationBar, this.buttonBeginning, this.buttonEnd, required this.text});
+class BaseScreen extends StatelessWidget{
+  const BaseScreen({super.key,required this.body, this.bottomNavigationBar, this.buttonBeginning, this.buttonEnd, required this.text}); //the last argument is the title 
   final Widget body; 
   final BottomNavigationBar ?bottomNavigationBar;
   final IconButton ?buttonBeginning; 

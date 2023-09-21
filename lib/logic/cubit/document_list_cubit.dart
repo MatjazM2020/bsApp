@@ -4,14 +4,18 @@ import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:dobavnice_app/routes/routers.dart'; 
 
-class DocumentListCubit extends Cubit<List<ClaimDocumentsResponse>> { //v tem cubitu hranim state za home page dobavnice (nepodpisane);
+/* INFO: 
+   This cubit just calls the api for retrieving the unsigned documents list, and storing it in its state.  
+*/ 
+
+class DocumentListCubit extends Cubit<List<ClaimDocumentsResponse>> { 
    DocumentListCubit() : super([]); 
 
    void setDocumentList(List<ClaimDocumentsResponse> newDocls){
     emit(newDocls); 
    }
 
-   void navigateToDocumentList(){ 
+   void navigateToDocumentList(){ //this method is for navigation 
     router.go(Constants.documentDetailViewPath);
    }
 

@@ -4,6 +4,10 @@ import 'package:dobavnice_app/routes/routers.dart';
 import 'package:dobavnice_app/screens/base_screen.dart';
 import 'package:flutter/material.dart';
 
+/* INFO: 
+   This is the settings screen. 
+*/
+
 class SettingsScreen extends StatefulWidget{
  @override
   _SettingsScreenState createState() => _SettingsScreenState();

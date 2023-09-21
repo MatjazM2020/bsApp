@@ -1,6 +1,11 @@
 import 'package:dobavnice_app/models/constants.dart';
 import 'package:flutter/material.dart';
 
+/* INFO: 
+   Themes, which can be used in other files. 
+*/
+
+
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: Color(0xff489FE8), 

@@ -4,6 +4,11 @@ import 'package:dobavnice_app/screens/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:signature/signature.dart';
 
+/* INFO: 
+ This widget is now standing on its own, it is not yet integrated as it should be. It can be accessed form the home.dart screen by tapping the sign button on the top right corner.  
+*/
+
+
 class Sign extends StatelessWidget {
   Sign({super.key});
   LoadingCubit loadingCubit = LoadingCubit(); 

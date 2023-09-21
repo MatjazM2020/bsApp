@@ -1,7 +1,12 @@
+/* INFO: 
+  In this class we define the constants which we use in other files. 
+*/
+
+
 class Constants{
   static const tenant = 'FLBDev'; 
   static const company = 'FLB'; 
-  static const baseUrl = 'http://devapp.devweb.b-s.si/'; 
+  static const baseUrl = 'http://devapp.devweb.b-s.si/'; //We use this baseUrl so that we can communicate with the server also from the outside (outside of the BS network)
   static const authorizeDeviceUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/AuthorizeDevice';
   static const createNewHandlerUri = '/api/anonymous/FLBDev/pub/FLB/DocumentSigningDevice/CreateNewHandler'; 
   static const settings = 'Settings'; 

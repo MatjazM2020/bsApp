@@ -1,4 +1,3 @@
-
 import 'package:dobavnice_app/flb_api/output/dobavnica_api.swagger.dart';
 import 'package:dobavnice_app/logic/cubit/document_list_cubit.dart';
 import 'package:dobavnice_app/screens/document_detail_view.dart';
@@ -13,11 +12,16 @@ import 'package:dobavnice_app/screens/register.dart';
 import 'package:dobavnice_app/screens/home.dart';
 import 'package:dobavnice_app/screens/loading_screen.dart';
 
+/* INFO: 
+  this file is about routes. We are using the go_router library. 
+  the paths are stored in variables in the lib/models/constants.dart file. 
+  
+*/
 
 final GoRouter router = GoRouter(
   routes: <GoRoute>[   
     GoRoute(
-      path: '/',
+      path: '/', //this is the root, it is the first page that is displayed by default
       builder: (BuildContext context, GoRouterState state) {
         return const LoadingScreen();
       },

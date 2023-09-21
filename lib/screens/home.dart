@@ -7,13 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:dobavnice_app/screens/base_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/* INFO:
+  This is the main screen. The list in the middle, is the list of doucuments that have not been signed yet. 
+*/
+
 
   class DocumentList extends StatelessWidget {
-    const DocumentList({super.key, required this.docls}); 
+    const DocumentList({super.key, required this.docls}); //we pass an additional argument to the constructor, which are the unsigned documents 
     final List<ClaimDocumentsResponse> docls;
 
 
-  String numberOfItems() {
+  String numberOfItems() { //function to return the number of unsigned documents
     if (docls.length == 1) {
       return '${docls.length} item';
     } else {
@@ -54,7 +58,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
           Row(
             children: [
               const SizedBox(width: 20),
-              IconButton(icon: Image.asset(Constants.signImgPath), onPressed: (){router.go(Constants.signaturePath);},)
+              IconButton(icon: Image.asset(Constants.signImgPath), onPressed: (){router.go(Constants.signaturePath);},) //from this button we access the signature screen
             ],
           ),
           Container(
@@ -77,7 +81,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
                 ),
                 const Spacer(),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {}, //TODO 
                     icon: Image.asset(Constants.hamburgerPath)),
               ],
             ),
@@ -98,7 +102,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
           ),
           Container(
             height: 15.0,
-            color: Colors.grey[100], // Very light gray background color
+            color: Colors.grey[100], 
           ),
           Divider(height: 1, color: Colors.blueGrey[100]),
           Container(
@@ -115,7 +119,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
                       border: InputBorder.none,
                       hintText: 'Search...',
                     ),
-                    onChanged: (value) {},
+                    onChanged: (value) {}, //TODO
                   ),
                 ),
                 IconButton(
@@ -127,7 +131,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
           ),
           Divider(height: 1, color: Colors.blueGrey[100]),
           Expanded(
-            child: ListView.builder( 
+            child: ListView.builder( // this is the list of documents that have not been signed yet 
               itemCount: docls.length,
               itemBuilder: (ctx, index) {
                 final document = docls[index];
@@ -143,14 +147,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
                           Text(document.signatoryAddress ?? '',
                               style: const TextStyle(fontSize: 14)),
                           Text(
-                            '${document.numberOfRejectedImages ?? ''}',
+                            '${document.numberOfRejectedImages ?? ''}', 
                             style: const TextStyle(fontSize: 14),
                           ),
                           TextButton(
                               child: const Text('Show'),
                               onPressed: () async{
-                                await context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(document.documentSigningRequestId);
-                                router.go(Constants.documentDetailViewPath);
+                                await context.read<DocumentDetailGetPacketsCubit>().getSigningDocuments(document.id);  //updating the state of documentDetailGetPacketsCubit according to the document.id 
+                                router.go(Constants.documentDetailViewPath); //navigating to the documentDetailView screen 
                              }
                            )
                         ],

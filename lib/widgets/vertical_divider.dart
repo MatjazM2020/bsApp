@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+ 
+/* INFO: 
+  custom widget- vertical divider
+*/ 
 
 class CustomVerticalDivider extends StatelessWidget {
   const CustomVerticalDivider({super.key});
